@@ -418,28 +418,10 @@ body {
     gap: var(--space-md);
 }
 
-.hiring-right {
-    height: 100%;
-}
-
-.hiring-right .image-wrap {
-    height: 100%;
-    padding: 0;
-}
-
 .hiring-right .image-wrap img {
-    height: 100%;
+    width: 100%;
+    height: auto;
     object-fit: contain;
-}
-
-.hiring-right-fit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hiring-right-fit img {
-    object-fit: cover !important;
 }
 
 /* Market Chart (04b) */
