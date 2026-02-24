@@ -78,6 +78,21 @@ def build_html_footer() -> str:
         }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('.reveal, .reveal-children').forEach(el => observer.observe(el));
+
+        // Video: play on scroll into view, pause when out of view
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('video.demo-video').forEach(v => videoObserver.observe(v));
     });
     </script>
 </body>
