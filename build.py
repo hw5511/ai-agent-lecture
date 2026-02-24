@@ -79,11 +79,75 @@ def build_html_footer() -> str:
 
         document.querySelectorAll('.reveal, .reveal-children').forEach(el => observer.observe(el));
 
-        // Video: lazy load on first play
-        document.querySelectorAll('video.demo-video').forEach(v => {
-            v.addEventListener('play', () => {
-                if (v.readyState < 2) v.load();
-            }, { once: true });
+        // Video modal player
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        // Add play overlay to each video-showcase
+        document.querySelectorAll('.video-showcase').forEach(wrap => {
+            const overlay = document.createElement('div');
+            overlay.className = 'play-overlay';
+            overlay.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>';
+            wrap.appendChild(overlay);
+        });
+
+        // Create modal backdrop (once)
+        const backdrop = document.createElement('div');
+        backdrop.className = 'video-modal-backdrop';
+        document.body.appendChild(backdrop);
+
+        function openVideoModal(src, poster) {
+            if (isMobile) {
+                // Mobile: create temp video and request fullscreen
+                const tmp = document.createElement('video');
+                tmp.src = src;
+                tmp.poster = poster;
+                tmp.controls = true;
+                tmp.autoplay = true;
+                tmp.playsInline = false;
+                tmp.style.display = 'none';
+                document.body.appendChild(tmp);
+                tmp.play().then(() => {
+                    if (tmp.requestFullscreen) tmp.requestFullscreen();
+                    else if (tmp.webkitEnterFullscreen) tmp.webkitEnterFullscreen();
+                }).catch(() => {});
+                tmp.addEventListener('fullscreenchange', () => {
+                    if (!document.fullscreenElement) { tmp.pause(); tmp.remove(); }
+                });
+                tmp.addEventListener('webkitendfullscreen', () => { tmp.pause(); tmp.remove(); });
+                tmp.addEventListener('ended', () => { tmp.remove(); });
+                return;
+            }
+            // Desktop: modal popup
+            backdrop.innerHTML = '<button class="video-modal-close">&times;</button>';
+            const mv = document.createElement('video');
+            mv.src = src;
+            mv.poster = poster;
+            mv.controls = true;
+            mv.autoplay = true;
+            mv.loop = true;
+            mv.style.borderRadius = '12px';
+            backdrop.appendChild(mv);
+            backdrop.classList.add('active');
+            backdrop.style.pointerEvents = 'auto';
+            mv.play().catch(() => {});
+            function closeModal() {
+                mv.pause();
+                backdrop.classList.remove('active');
+                setTimeout(() => { backdrop.innerHTML = ''; backdrop.style.pointerEvents = 'none'; }, 300);
+            }
+            backdrop.querySelector('.video-modal-close').addEventListener('click', (e) => { e.stopPropagation(); closeModal(); });
+            backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); }, { once: true });
+            document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { closeModal(); document.removeEventListener('keydown', esc); } });
+        }
+
+        document.querySelectorAll('.video-showcase').forEach(wrap => {
+            wrap.addEventListener('click', () => {
+                const v = wrap.querySelector('video');
+                if (!v) return;
+                const src = v.querySelector('source')?.src || v.src;
+                const poster = v.poster || '';
+                openVideoModal(src, poster);
+            });
         });
     });
     </script>

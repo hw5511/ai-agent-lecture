@@ -146,7 +146,7 @@
       "file": "sections/09_lecture_features.html",
       "title": "Lecture Features",
       "order": 17,
-      "enabled": true,
+      "enabled": false,
       "metadata": { "created": "2026-02-20T00:00:00", "modified": "2026-02-20T00:00:00" }
     },
     {
