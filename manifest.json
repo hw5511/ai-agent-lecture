@@ -190,9 +190,9 @@
       "metadata": { "created": "2026-02-24T00:00:00", "modified": "2026-02-24T00:00:00" }
     },
     {
-      "id": "usecase_7",
+      "id": "usecase_7_8",
       "file": "sections/12d_usecase_cardnews.html",
-      "title": "Use Case 7: Workflow",
+      "title": "Use Case 7-8: Workflow + Daily Report",
       "order": 23,
       "enabled": true,
       "metadata": { "created": "2026-02-24T00:00:00", "modified": "2026-02-24T00:00:00" }
