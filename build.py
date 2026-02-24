@@ -79,12 +79,17 @@ def build_html_footer() -> str:
 
         document.querySelectorAll('.reveal, .reveal-children').forEach(el => observer.observe(el));
 
-        // Video: play on scroll into view, pause when out of view
+        // Video: lazy load + play on scroll, pause when out
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const video = entry.target;
                 if (entry.isIntersecting) {
-                    video.play().catch(() => {});
+                    if (video.readyState < 2) {
+                        video.load();
+                        video.addEventListener('canplay', () => video.play().catch(() => {}), { once: true });
+                    } else {
+                        video.play().catch(() => {});
+                    }
                 } else {
                     video.pause();
                     video.currentTime = 0;
