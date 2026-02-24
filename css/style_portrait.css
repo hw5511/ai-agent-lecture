@@ -1549,6 +1549,35 @@ body {
     display: block;
     object-fit: contain;
     background: #0f0f1a;
+    cursor: pointer;
+}
+
+.video-showcase {
+    position: relative;
+}
+
+.video-showcase .play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    background: rgba(0,0,0,0.55);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.video-showcase .play-overlay svg {
+    margin-left: 4px;
+}
+
+.video-showcase.playing .play-overlay {
+    opacity: 0;
 }
 
 .usecase-caption {

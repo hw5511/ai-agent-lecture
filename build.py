@@ -79,25 +79,29 @@ def build_html_footer() -> str:
 
         document.querySelectorAll('.reveal, .reveal-children').forEach(el => observer.observe(el));
 
-        // Video: lazy load + play on scroll, pause when out
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const video = entry.target;
-                if (entry.isIntersecting) {
-                    if (video.readyState < 2) {
-                        video.load();
-                        video.addEventListener('canplay', () => video.play().catch(() => {}), { once: true });
+        // Video: click to load + play with play button overlay
+        document.querySelectorAll('.video-showcase').forEach(wrap => {
+            const v = wrap.querySelector('video');
+            if (!v) return;
+            const overlay = document.createElement('div');
+            overlay.className = 'play-overlay';
+            overlay.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>';
+            wrap.appendChild(overlay);
+            wrap.addEventListener('click', () => {
+                if (v.paused) {
+                    if (v.readyState < 2) {
+                        v.load();
+                        v.addEventListener('canplay', () => { v.play().catch(() => {}); wrap.classList.add('playing'); }, { once: true });
                     } else {
-                        video.play().catch(() => {});
+                        v.play().catch(() => {});
+                        wrap.classList.add('playing');
                     }
                 } else {
-                    video.pause();
-                    video.currentTime = 0;
+                    v.pause();
+                    wrap.classList.remove('playing');
                 }
             });
-        }, { threshold: 0.3 });
-
-        document.querySelectorAll('video.demo-video').forEach(v => videoObserver.observe(v));
+        });
     });
     </script>
 </body>
