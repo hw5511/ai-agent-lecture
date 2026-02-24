@@ -79,28 +79,11 @@ def build_html_footer() -> str:
 
         document.querySelectorAll('.reveal, .reveal-children').forEach(el => observer.observe(el));
 
-        // Video: click to load + play with play button overlay
-        document.querySelectorAll('.video-showcase').forEach(wrap => {
-            const v = wrap.querySelector('video');
-            if (!v) return;
-            const overlay = document.createElement('div');
-            overlay.className = 'play-overlay';
-            overlay.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>';
-            wrap.appendChild(overlay);
-            wrap.addEventListener('click', () => {
-                if (v.paused) {
-                    if (v.readyState < 2) {
-                        v.load();
-                        v.addEventListener('canplay', () => { v.play().catch(() => {}); wrap.classList.add('playing'); }, { once: true });
-                    } else {
-                        v.play().catch(() => {});
-                        wrap.classList.add('playing');
-                    }
-                } else {
-                    v.pause();
-                    wrap.classList.remove('playing');
-                }
-            });
+        // Video: lazy load on first play
+        document.querySelectorAll('video.demo-video').forEach(v => {
+            v.addEventListener('play', () => {
+                if (v.readyState < 2) v.load();
+            }, { once: true });
         });
     });
     </script>
