@@ -153,17 +153,17 @@
       "id": "agent_demo",
       "file": "sections/10_agent_demo.html",
       "title": "Agent Demo",
-      "order": 18,
+      "order": 27,
       "enabled": true,
-      "metadata": { "created": "2026-02-20T00:00:00", "modified": "2026-02-20T00:00:00" }
+      "metadata": { "created": "2026-02-20T00:00:00", "modified": "2026-02-24T00:00:00" }
     },
     {
       "id": "qa",
       "file": "sections/11_qa.html",
       "title": "Q&A",
       "order": 19,
-      "enabled": true,
-      "metadata": { "created": "2026-02-20T00:00:00", "modified": "2026-02-20T00:00:00" }
+      "enabled": false,
+      "metadata": { "created": "2026-02-20T00:00:00", "modified": "2026-02-24T00:00:00" }
     },
     {
       "id": "usecase_email",
