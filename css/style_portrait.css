@@ -633,25 +633,31 @@ body {
 .roadmap-card--blue {
     background:
         linear-gradient(135deg,
-            rgba(255,255,255,0.12) 0%,
-            rgba(255,255,255,0) 40%,
-            rgba(255,255,255,0.08) 60%,
-            rgba(255,255,255,0) 100%),
+            rgba(255,255,255,0.25) 0%,
+            rgba(255,255,255,0.03) 25%,
+            rgba(255,255,255,0.18) 50%,
+            rgba(255,255,255,0) 70%,
+            rgba(255,255,255,0.12) 90%,
+            rgba(255,255,255,0.06) 100%),
         var(--accent);
     color: var(--accent-fg);
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .roadmap-card--dark {
     background:
         linear-gradient(135deg,
-            rgba(255,255,255,0.08) 0%,
-            rgba(255,255,255,0) 35%,
-            rgba(255,255,255,0.05) 55%,
-            rgba(255,255,255,0) 100%),
+            rgba(255,255,255,0.18) 0%,
+            rgba(255,255,255,0) 20%,
+            rgba(255,255,255,0.12) 45%,
+            rgba(255,255,255,0) 65%,
+            rgba(255,255,255,0.08) 85%,
+            rgba(255,255,255,0.03) 100%),
         var(--primary);
     color: var(--primary-fg);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.15);
 }
 
 .roadmap-step {
@@ -798,13 +804,16 @@ body {
 .currintro-card--accent {
     background:
         linear-gradient(135deg,
-            rgba(255,255,255,0.12) 0%,
-            rgba(255,255,255,0) 40%,
-            rgba(255,255,255,0.08) 60%,
-            rgba(255,255,255,0) 100%),
+            rgba(255,255,255,0.25) 0%,
+            rgba(255,255,255,0.03) 25%,
+            rgba(255,255,255,0.18) 50%,
+            rgba(255,255,255,0) 70%,
+            rgba(255,255,255,0.12) 90%,
+            rgba(255,255,255,0.06) 100%),
         var(--accent);
     color: var(--accent-fg);
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .currintro-card--accent .currintro-desc {
