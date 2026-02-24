@@ -1508,8 +1508,10 @@ body {
     max-width: 900px;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    border: 2px solid #1a1a2e;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,0.15),
+        0 4px 12px rgba(0,0,0,0.08);
 }
 
 .demo-video {
@@ -1525,13 +1527,15 @@ body {
     align-items: center;
     gap: var(--space-sm);
     padding: var(--space-sm) 0;
+    max-width: 900px;
+    width: 100%;
 }
 
 .caption-tag {
     display: inline-block;
-    padding: 0.2rem 0.6rem;
-    background: var(--accent);
-    color: var(--accent-fg);
+    padding: 0.25rem 0.75rem;
+    background: var(--primary);
+    color: var(--primary-fg);
     border-radius: 6px;
     font-size: var(--font-xs);
     font-weight: 600;
