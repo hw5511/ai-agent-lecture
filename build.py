@@ -93,6 +93,7 @@ def build_html_footer() -> str:
         // Create modal backdrop (once)
         const backdrop = document.createElement('div');
         backdrop.className = 'video-modal-backdrop';
+        backdrop.style.pointerEvents = 'none';
         document.body.appendChild(backdrop);
 
         function openVideoModal(src, poster) {
@@ -136,7 +137,7 @@ def build_html_footer() -> str:
                 setTimeout(() => { backdrop.innerHTML = ''; backdrop.style.pointerEvents = 'none'; }, 300);
             }
             backdrop.querySelector('.video-modal-close').addEventListener('click', (e) => { e.stopPropagation(); closeModal(); });
-            backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); }, { once: true });
+            backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
             document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { closeModal(); document.removeEventListener('keydown', esc); } });
         }
 
