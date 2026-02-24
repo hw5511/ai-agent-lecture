@@ -166,12 +166,60 @@
       "metadata": { "created": "2026-02-20T00:00:00", "modified": "2026-02-20T00:00:00" }
     },
     {
-      "id": "use_cases",
-      "file": "sections/12_use_cases.html",
-      "title": "Use Cases",
+      "id": "usecase_email",
+      "file": "sections/12a_usecase_email.html",
+      "title": "Use Case - Email",
       "order": 20,
       "enabled": true,
-      "metadata": { "created": "2026-02-20T00:00:00", "modified": "2026-02-20T00:00:00" }
+      "metadata": { "created": "2026-02-24T00:00:00", "modified": "2026-02-24T00:00:00" }
+    },
+    {
+      "id": "usecase_report",
+      "file": "sections/12b_usecase_report.html",
+      "title": "Use Case - Report",
+      "order": 21,
+      "enabled": true,
+      "metadata": { "created": "2026-02-24T00:00:00", "modified": "2026-02-24T00:00:00" }
+    },
+    {
+      "id": "usecase_video",
+      "file": "sections/12c_usecase_video.html",
+      "title": "Use Case - Video",
+      "order": 22,
+      "enabled": true,
+      "metadata": { "created": "2026-02-24T00:00:00", "modified": "2026-02-24T00:00:00" }
+    },
+    {
+      "id": "usecase_cardnews",
+      "file": "sections/12d_usecase_cardnews.html",
+      "title": "Use Case - Card News",
+      "order": 23,
+      "enabled": true,
+      "metadata": { "created": "2026-02-24T00:00:00", "modified": "2026-02-24T00:00:00" }
+    },
+    {
+      "id": "usecase_svg",
+      "file": "sections/12e_usecase_svg.html",
+      "title": "Use Case - SVG",
+      "order": 24,
+      "enabled": true,
+      "metadata": { "created": "2026-02-24T00:00:00", "modified": "2026-02-24T00:00:00" }
+    },
+    {
+      "id": "usecase_shopping",
+      "file": "sections/12f_usecase_shopping.html",
+      "title": "Use Case - Shopping",
+      "order": 25,
+      "enabled": true,
+      "metadata": { "created": "2026-02-24T00:00:00", "modified": "2026-02-24T00:00:00" }
+    },
+    {
+      "id": "usecase_workflow",
+      "file": "sections/12g_usecase_workflow.html",
+      "title": "Use Case - Workflow",
+      "order": 26,
+      "enabled": true,
+      "metadata": { "created": "2026-02-24T00:00:00", "modified": "2026-02-24T00:00:00" }
     }
   ],
   "build_config": {

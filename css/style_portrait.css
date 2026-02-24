@@ -1499,3 +1499,47 @@ body {
         grid-template-columns: 1.5fr repeat(2, 1fr);
     }
 }
+
+/* ============================================
+   Use Case Video Showcase (Sections 12a-12g)
+   ============================================ */
+.video-showcase {
+    width: 100%;
+    max-width: 900px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+.demo-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    background: #0f0f1a;
+}
+
+.usecase-caption {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+}
+
+.caption-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: var(--accent);
+    color: var(--accent-fg);
+    border-radius: 6px;
+    font-size: var(--font-xs);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.caption-text {
+    font-size: var(--font-sm);
+    color: var(--muted-fg);
+    line-height: 1.4;
+}
