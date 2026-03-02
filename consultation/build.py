@@ -214,27 +214,28 @@ def build(standalone: bool = False):
             html_content = re.sub(css_link_pattern, f'<style>\n{css_content}\n</style>', html_content)
             print(f"  CSS inlined")
 
-        # Encode images
-        img_pattern = re.compile(r'src=["\']([^"\']+)["\']')
+        # Encode images (src= and poster= attributes)
+        asset_pattern = re.compile(r'(src|poster)=["\']([^"\']+)["\']')
         encoded_count = 0
 
-        def replace_image(match):
+        def replace_asset(match):
             nonlocal encoded_count
-            img_src = match.group(1)
-            if img_src.startswith('data:') or img_src.startswith('http'):
+            attr = match.group(1)
+            asset_src = match.group(2)
+            if asset_src.startswith('data:') or asset_src.startswith('http'):
                 return match.group(0)
 
-            img_path = (build_dir / img_src).resolve()
-            if img_path.exists():
+            asset_path = (build_dir / asset_src).resolve()
+            if asset_path.exists():
                 try:
-                    data_uri = encode_to_base64(img_path)
+                    data_uri = encode_to_base64(asset_path)
                     encoded_count += 1
-                    return f'src="{data_uri}"'
+                    return f'{attr}="{data_uri}"'
                 except Exception as e:
-                    print(f"  Warning: Could not encode {img_src}: {e}")
+                    print(f"  Warning: Could not encode {asset_src}: {e}")
             return match.group(0)
 
-        html_content = img_pattern.sub(replace_image, html_content)
+        html_content = asset_pattern.sub(replace_asset, html_content)
 
         standalone_filename = manifest['build_config']['standalone_filename']
         standalone_path = build_dir / standalone_filename
