@@ -27,24 +27,12 @@ jobs:
           python-version: '3.11'
 
       - name: Build HTML
-        run: python build.py
+        run: cd consultation && python build.py --standalone
 
       - name: Prepare deployment
         run: |
           mkdir -p _site
-          cp -r css _site/
-          cp -r assets _site/
-          cp -r _build _site/
-          cp -r sections _site/
-          cat > _site/index.html << 'HEREDOC'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta http-equiv="refresh" content="0;url=_build/ai_agent_lecture.html">
-          </head>
-          <body></body>
-          </html>
-          HEREDOC
+          cp consultation/_build/ai_agent_lecture_standalone.html _site/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
